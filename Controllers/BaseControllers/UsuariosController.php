@@ -24,6 +24,16 @@ class UsuariosController extends Controller
         return $this->Return(200, UsuariosMessage::GET_OK_ALL, $this->UsuariosInjection->ObtenerTodos(), UsuariosModel::GET_ALL_OK);
     }
 
+    public function obtener($id) {
+        $usuario = $this->UsuariosInjection->ObtenerUno($id);
+        if ($usuario) {
+            $this->Return(200, UsuariosMessage::GET_OK, $usuario, UsuariosModel::GET_OK);
+        } else {
+            $this->Return(404, UsuariosMessage::GET_ERROR, null, UsuariosModel::GET_ERROR);
+        }
+    }
+
+
     public function crear(array $data)
     {
         $errors = Validate::Validate($data, UsuariosRules::Rules, 'crear');

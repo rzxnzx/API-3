@@ -1,0 +1,22 @@
+<!-- create.component.html -->
+
+<form [formGroup]="cursoForm" (ngSubmit)="save()" style="display: flex; flex-direction: column;">
+
+    <div>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" placeholder="Nombre" required>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Creditos</mat-label>
+            <textarea matInput formControlName="creditos" placeholder="Creditos" required></textarea>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button type="submit" mat-raised-button color="primary">Guardar</button>
+    </div>
+</form>

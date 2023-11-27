@@ -1,0 +1,64 @@
+<!-- list.component.html -->
+<div class="table-container">
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- Columna Nombre del curso -->
+      <ng-container matColumnDef="eliminar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="eliminar(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="editar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="update(element.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreUnidad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-book"></i> Unidad
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.unidad.nombre}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-book"></i> Titulo
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.titulo}}</mat-cell>
+      </ng-container>
+  
+      <!-- Columna Nombre del usuario -->
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-user"></i> Descripcion
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.descripcion}}</mat-cell>
+      </ng-container>
+  
+      <!-- Columna Introducción del curso -->
+      <ng-container matColumnDef="actividadescol">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-info-circle"></i> Actividades
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.actividadescol}}</mat-cell>
+      </ng-container>
+  
+      <!-- Definición de filas y columnas -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <!-- Paginador -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <button mat-fab extended (click)="create()">
+      Crear
+    </button>
+  </div>
+  

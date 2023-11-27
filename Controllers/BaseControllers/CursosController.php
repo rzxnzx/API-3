@@ -19,6 +19,15 @@ class CursosController extends Controller
         $this->CursoInjection = $Injection;
     }
 
+    public function obtener($id) {
+        $usuario = $this->CursoInjection->ObtenerUno($id);
+        if ($usuario) {
+            $this->Return(200, CursosMessage::GET_OK, $usuario, CursosModel::GET_ALL_OK);
+        } else {
+            $this->Return(404, CursosMessage::GET_ERROR, null, CursosModel::GET_ERROR);
+        }
+    }
+
     public function listar()
     {
         return $this->Return(200, CursosMessage::GET_OK_ALL, $this->CursoInjection->ObtenerTodos(), CursosModel::GET_ALL_OK);

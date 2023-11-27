@@ -1,0 +1,76 @@
+<!-- edit.component.html -->
+
+<div>
+    <h2>Editar Unidad</h2>
+  
+    <form [formGroup]="formularioUnidad" (ngSubmit)="actualizarUnidad()" style="display: flex; flex-direction: column;">
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Nombre" required [(ngModel)]="unidad.nombre">
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Introducción</mat-label>
+          <textarea matInput formControlName="introduccion" placeholder="Introducción" required [(ngModel)]="unidad.introduccion"></textarea>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Fecha de Creación</mat-label>
+          <input matInput formControlName="fecha_creacion" placeholder="Fecha de Creación" [matDatepicker]="picker" required
+            [(ngModel)]="unidad.fecha_creacion">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Hora de Creación</mat-label>
+          <input matInput formControlName="hora_creacion" placeholder="Hora de Creación" required [(ngModel)]="unidad.hora_creacion">
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Activa</mat-label>
+          <mat-select formControlName="activa" [(ngModel)]="unidad.activa">
+            <mat-option [value]="1">Sí</mat-option>
+            <mat-option [value]="0">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="cursos_id" [(ngModel)]="unidad.cursos_id">
+            <mat-option *ngFor="let curso of cursos" [value]="curso.id">
+              {{ curso.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="usuario_id" [(ngModel)]="unidad.usuario_id">
+            <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
+              {{ usuario.nombres }} {{ usuario.apellidos }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <button type="submit" mat-raised-button color="primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+  

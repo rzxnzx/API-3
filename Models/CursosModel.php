@@ -12,4 +12,5 @@ class CursosModel
     const CURSO_OK = "GET_CURSO_OK";
     const CURSO_ERROR = "GET_CURSO_ERROR";
     const GET_ALL_OK = "GET_ALL_CURSOS_OK";
+    const GET_ERROR = "GET_CURSO_ERROR";
 }

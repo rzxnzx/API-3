@@ -19,6 +19,16 @@ class UnidadesController extends Controller
         $this->UnidadesInjection = $Injection;
     }
 
+    public function obtener($id) {
+        $usuario = $this->UnidadesInjection->ObtenerUno($id);
+        if ($usuario) {
+            $this->Return(200, UnidadesMessage::GET_OK, $usuario, UnidadesModel::GET_OK);
+        } else {
+            $this->Return(404, UnidadesMessage::GET_ERROR, null, UnidadesModel::GET_ERROR);
+        }
+    }
+
+
     public function listar()
     {
         return $this->Return(200, UnidadesMessage::GET_OK_ALL, $this->UnidadesInjection->ObtenerTodos(), UnidadesModel::GET_ALL_OK);

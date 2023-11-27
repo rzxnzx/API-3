@@ -82,12 +82,12 @@ class Validate
                 return null;
             },
             'Hour' => function ($value, $campo) {
-                $pattern = '/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/';
+                $pattern = '/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/';
                 if (!preg_match($pattern, $value)) {
-                    return ["$campo" => "El campo $campo no tiene el formato de hora HH:MM"];
+                    return ["$campo" => "El campo $campo no tiene el formato de hora HH:MM:SS"];
                 }
                 return null;
-            },
+            },            
             'Required' => function ($value, $campo) {
                 if (empty($value)) {
                     return ["$campo" => "El campo $campo es obligatorio y no puede estar vacío"];

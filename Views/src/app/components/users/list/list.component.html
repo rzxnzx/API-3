@@ -1,0 +1,69 @@
+<div class="table-container">
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="eliminar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="eliminar(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="editar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="update(element.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nombres">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-user"></i> Nombres
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.nombres}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="apellidos">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-user"></i> Apellidos
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.apellidos}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-envelope"></i> Email
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="identificacion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-id-card"></i> Identificación
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.identificacion}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fecha_nacimiento">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-calendar"></i> Fecha de Nacimiento
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.fecha_nacimiento}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-user"></i> Username
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="celular">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <i class="pi pi-phone"></i> Celular
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.celular}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <button mat-fab extended (click)="create()">
+      Crear
+    </button>
+  </div>
+  

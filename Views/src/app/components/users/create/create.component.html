@@ -1,0 +1,57 @@
+<!-- create.component.html -->
+
+<form [formGroup]="usuarioForm" (ngSubmit)="save()" style="display: flex; flex-direction: column;">
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="nombres" placeholder="Nombres">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="apellidos" placeholder="Apellidos">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="email" placeholder="Email" type="email">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="identificacion" placeholder="Identificación">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="fecha_nacimiento" placeholder="Fecha de Nacimiento" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="username" placeholder="Username">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="password" placeholder="Password" type="password">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="celular" placeholder="Celular">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button type="submit" mat-raised-button color="primary">Guardar</button>
+    </div>
+</form>

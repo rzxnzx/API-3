@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
+  button {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  mat-datepicker-toggle {
+    color: #007bff; 
+    cursor: pointer;
+  }
+  

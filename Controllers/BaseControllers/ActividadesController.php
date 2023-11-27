@@ -23,6 +23,14 @@ class ActividadesController extends Controller
     {
         return $this->Return(200, ActividadesMessage::GET_OK_ALL, $this->ActividadesInjection->ObtenerTodos(), ActividadesModel::GET_ALL_OK);
     }
+    public function obtener($id) {
+        $usuario = $this->ActividadesInjection->ObtenerUno($id);
+        if ($usuario) {
+            $this->Return(200, ActividadesMessage::GET_OK, $usuario, ActividadesModel::GET_OK);
+        } else {
+            $this->Return(404, ActividadesMessage::GET_ERROR, null, ActividadesModel::GET_ERROR);
+        }
+    }
 
     public function crear(array $data)
     {

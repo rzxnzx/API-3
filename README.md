@@ -28,7 +28,7 @@ http://localhost:5000/index.php?controller=usuarios&action=eliminar&id=1
 ```
 Estructura simple:
 ```
-http://localhost:5000/actividades/eliminar/1
+http://localhost:5000/usuarios/eliminar/1
 ```
 
 De esta manera es más fácil poder realizar las peticiones. Luego de esto el controlador llama la clase  `Validate` que se encargará de validar los campos que se pasarán a través del JSON que se enviará como petición. Si no hay errores en base a las validaciones, el controlador llama a la clase inyectada que funciona como servicio, para así entonces realizar la llamada a la base de datos. Y luego simplemente usando el métdodo  `Return` de la clase  `Controller` se devuelve la respuesta a la petición.

@@ -10,7 +10,6 @@ DB_HOST= TU HOST DE TU BASE DE DATOS (Si es un servidor local, será 127.0.0.1)
 DB_USERNAME= USUARIO DE LA BASE DE DATOS (Generalmente es root)
 DB_PASSWORD= CONTRASEÑA DE LA BASE DE DATOS (Si se está utilizando XAMPP dejar vacío)
 DB_NAME= NOMBRE DE LA BASE DE DATOS
-
 ```
 ## Iniciar el servidor
 Iniciamos el servidor en localhost:8000 con php.

@@ -1,64 +1,30 @@
-<!-- list.component.html -->
-<div class="table-container">
-    <mat-table [dataSource]="dataSource" matSort>
-      <!-- Columna Nombre del curso -->
-      <ng-container matColumnDef="eliminar">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="eliminar(element.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      
-      <ng-container matColumnDef="editar">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="update(element.id)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
+<div class="container mx-auto mt-8">
+  <button class="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded mb-4 transition duration-300 ease-in-out" (click)="create()">Crear Actividad</button>
 
-      <ng-container matColumnDef="nombreUnidad">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-book"></i> Unidad
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.unidad.nombre}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="titulo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-book"></i> Titulo
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.titulo}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Nombre del usuario -->
-      <ng-container matColumnDef="descripcion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-user"></i> Descripcion
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.descripcion}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Introducción del curso -->
-      <ng-container matColumnDef="actividadescol">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-info-circle"></i> Actividades
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.actividadescol}}</mat-cell>
-      </ng-container>
-  
-      <!-- Definición de filas y columnas -->
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  
-    <!-- Paginador -->
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-    <button mat-fab extended (click)="create()">
-      Crear
-    </button>
-  </div>
-  
+  <table class="min-w-full bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th class="py-3 px-4">Eliminar</th>
+        <th class="py-3 px-4">Editar</th>
+        <th class="py-3 px-4">Nombre de la Unidad</th>
+        <th class="py-3 px-4">Título</th>
+        <th class="py-3 px-4">Descripción</th>
+        <th class="py-3 px-4">Actividades</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actividad of dataSource.data" class="hover:bg-gray-100 transition duration-300 ease-in-out">
+        <td class="py-2 px-4">
+          <button class="text-red-600 hover:text-red-700 font-bold" (click)="eliminar(actividad.id)">Eliminar</button>
+        </td>
+        <td class="py-2 px-4">
+          <button class="text-yellow-600 hover:text-yellow-700 font-bold" (click)="update(actividad.id)">Editar</button>
+        </td>
+        <td class="py-2 px-4">{{ actividad.unidad.nombre }}</td>
+        <td class="py-2 px-4">{{ actividad.titulo }}</td>
+        <td class="py-2 px-4">{{ actividad.descripcion }}</td>
+        <td class="py-2 px-4">{{ actividad.actividadescol }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

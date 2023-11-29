@@ -1,69 +1,36 @@
-<div class="table-container">
-    <mat-table [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="eliminar">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="eliminar(element.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="editar">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="update(element.id)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="nombres">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-user"></i> Nombres
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.nombres}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="apellidos">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-user"></i> Apellidos
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.apellidos}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-envelope"></i> Email
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="identificacion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-id-card"></i> Identificación
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.identificacion}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="fecha_nacimiento">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-calendar"></i> Fecha de Nacimiento
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.fecha_nacimiento}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="username">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-user"></i> Username
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="celular">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-phone"></i> Celular
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.celular}}</mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-    <button mat-fab extended (click)="create()">
-      Crear
-    </button>
-  </div>
-  
+<div class="container mx-auto mt-8">
+  <button class="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded mb-4 transition duration-300 ease-in-out" (click)="create()">Crear Usuario</button>
+
+  <table class="min-w-full bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th class="py-3 px-4">Eliminar</th>
+        <th class="py-3 px-4">Editar</th>
+        <th class="py-3 px-4">Nombres</th>
+        <th class="py-3 px-4">Apellidos</th>
+        <th class="py-3 px-4">Email</th>
+        <th class="py-3 px-4">Identificación</th>
+        <th class="py-3 px-4">Fecha de Nacimiento</th>
+        <th class="py-3 px-4">Username</th>
+        <th class="py-3 px-4">Celular</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of dataSource.data" class="hover:bg-gray-100 transition duration-300 ease-in-out">
+        <td class="py-2 px-4">
+          <button class="text-red-600 hover:text-red-700 font-bold" (click)="delete(user.id)">Eliminar</button>
+        </td>
+        <td class="py-2 px-4">
+          <button class="text-yellow-600 hover:text-yellow-700 font-bold" (click)="update(user.id)">Editar</button>
+        </td>
+        <td class="py-2 px-4">{{ user.nombres }}</td>
+        <td class="py-2 px-4">{{ user.apellidos }}</td>
+        <td class="py-2 px-4">{{ user.email }}</td>
+        <td class="py-2 px-4">{{ user.identificacion }}</td>
+        <td class="py-2 px-4">{{ user.fecha_nacimiento }}</td>
+        <td class="py-2 px-4">{{ user.username }}</td>
+        <td class="py-2 px-4">{{ user.celular }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

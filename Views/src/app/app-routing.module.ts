@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'units/update/:id', component: UnidadEditComponent },
   { path: 'courses/update/:id', component: CursosEditComponent },
   { path: 'activities/update/:id', component: EditActividadComponent },
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
 ];
 
 @NgModule({

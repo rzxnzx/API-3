@@ -1,8 +1,12 @@
-<div class="navbar">
-    <a routerLink="/users" routerLinkActive="active">Users</a>
-    <a routerLink="/courses" routerLinkActive="active">Courses</a>
-    <a routerLink="/activities" routerLinkActive="active">Activities</a>
-    <a routerLink="/units" routerLinkActive="active">Units</a>
-  </div>
-  <router-outlet></router-outlet>
+<div class="flex flex-col min-h-screen">
+
   
+  <app-navbar></app-navbar>
+  
+  <main class="flex-grow">
+    <router-outlet></router-outlet>
+    
+  </main>
+
+  <app-footer></app-footer>
+</div>

@@ -34,6 +34,11 @@ import { UnidadEditComponent } from './components/unidades/edit/edit.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CursosEditComponent } from './components/cursos/edit/edit.component';
 import { EditActividadComponent } from './components/actividades/edit/edit.component';
+import { TableModule } from 'primeng/table';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +53,9 @@ import { EditActividadComponent } from './components/actividades/edit/edit.compo
     UsarioEditComponent,
     UnidadEditComponent,
     CursosEditComponent,
-    EditActividadComponent
+    EditActividadComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,8 @@ import { EditActividadComponent } from './components/actividades/edit/edit.compo
     MatSelectModule,
     MatIconModule,
     ToastModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    TableModule
 
   ],
   providers: [Service, MessageService, DatePipe],

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.css']
 })
 export class UsuariosListComponent implements OnInit {
-  displayedColumns: string[] = ['eliminar', 'editar', 'nombres', 'apellidos', 'email', 'identificacion', 'fecha_nacimiento', 'username', 'celular'];
+  displayedColumns: string[] = [ 'eliminar', 'editar','nombres', 'apellidos', 'email', 'identificacion', 'fecha_nacimiento', 'username', 'celular'];
   dataSource = new MatTableDataSource<User>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,7 +42,8 @@ export class UsuariosListComponent implements OnInit {
   update(id: number) {
     this.router.navigate(['users/update', id])
   }
-  eliminar(id: number) {
+  
+  delete(id: number) {
     this.userService.delete(id).subscribe((response: Response) => {
       if (response.code === 200) {
         this.ngOnInit();

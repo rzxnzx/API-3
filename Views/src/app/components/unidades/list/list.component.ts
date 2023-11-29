@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class UnidadesListComponent {
 
   displayedColumns: string[] = ['eliminar','editar','nombreUnidad','nombreCurso', 'nombreUsuario', 'introduccion', 'fecha_creacion', 'hora_creacion', 'activa'];
-  dataSource = new MatTableDataSource<Curso>();
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

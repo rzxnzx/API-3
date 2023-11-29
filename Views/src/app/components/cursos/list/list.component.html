@@ -1,45 +1,26 @@
-<!-- list.component.html -->
-<div class="table-container">
-  <mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="eliminar">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="eliminar(element.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-    <!-- Columna Nombre del curso -->
-    <ng-container matColumnDef="editar">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="update(element.id)">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="nombreCurso">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        <i class="pi pi-book"></i> Nombre
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
-    </ng-container>
+<div class="container mx-auto mt-8">
+  <button class="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded mb-4 transition duration-300 ease-in-out" (click)="create()">Crear Curso</button>
 
-    <ng-container matColumnDef="creditos">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        <i class="pi pi-book"></i> Creditos
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.creditos}}</mat-cell>
-    </ng-container>
-
-    <!-- Definición de filas y columnas -->
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
-  <!-- Paginador -->
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  <button mat-fab extended (click)="create()">
-    Crear
-  </button>
+  <table class="min-w-full bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th class="py-3 px-4">Eliminar</th>
+        <th class="py-3 px-4">Editar</th>
+        <th class="py-3 px-4">Nombre del Curso</th>
+        <th class="py-3 px-4">Créditos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curso of dataSource.data" class="hover:bg-gray-100 transition duration-300 ease-in-out">
+        <td class="py-2 px-4">
+          <button class="text-red-600 hover:text-red-700 font-bold" (click)="eliminar(curso.id)">Eliminar</button>
+        </td>
+        <td class="py-2 px-4">
+          <button class="text-yellow-600 hover:text-yellow-700 font-bold" (click)="update(curso.id)">Editar</button>
+        </td>
+        <td class="py-2 px-4">{{ curso.nombre }}</td>
+        <td class="py-2 px-4">{{ curso.creditos }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ActividadesListComponent {
   displayedColumns: string[] = ['eliminar','editar','nombreUnidad','titulo', 'descripcion', 'actividadescol'];
-  dataSource = new MatTableDataSource<Curso>();
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

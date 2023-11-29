@@ -1,87 +1,34 @@
-<!-- list.component.html -->
-<div class="table-container">
-    <mat-table [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="eliminar">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="eliminar(element.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      
-      <ng-container matColumnDef="editar">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="update(element.id)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
+<div class="container mx-auto mt-8">
+  <button class="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded mb-4 transition duration-300 ease-in-out" (click)="create()">Crear Unidad</button>
 
-      <ng-container matColumnDef="nombreUnidad">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-book"></i> Unidad
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="nombreCurso">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-book"></i> Curso
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.cursos.nombre}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Nombre del usuario -->
-      <ng-container matColumnDef="nombreUsuario">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-user"></i> Usuario
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.usuario.nombres}} {{element.usuario.apellidos}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Introducción del curso -->
-      <ng-container matColumnDef="introduccion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-info-circle"></i> Introducción
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.introduccion}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Fecha de Creación del curso -->
-      <ng-container matColumnDef="fecha_creacion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-calendar"></i> Fecha de Creación
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.fecha_creacion}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Hora de Creación del curso -->
-      <ng-container matColumnDef="hora_creacion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-clock"></i> Hora de Creación
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.hora_creacion}}</mat-cell>
-      </ng-container>
-  
-      <!-- Columna Estado del curso -->
-      <ng-container matColumnDef="activa">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-          <i class="pi pi-check-circle"></i> Estado
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.activa === 1 ? 'Activa' : 'Inactiva'}}</mat-cell>
-      </ng-container>
-  
-      <!-- Definición de filas y columnas -->
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  
-    <!-- Paginador -->
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-    <button mat-fab extended (click)="create()">
-      Crear
-    </button>
-  </div>
-  
+  <table class="min-w-full bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th class="py-3 px-4">Eliminar</th>
+        <th class="py-3 px-4">Editar</th>
+        <th class="py-3 px-4">Nombre Unidad</th>
+        <th class="py-3 px-4">Nombre Curso</th>
+        <th class="py-3 px-4">Nombre Usuario</th>
+        <th class="py-3 px-4">Introducción</th>
+        <th class="py-3 px-4">Fecha de Creación</th>
+        <th class="py-3 px-4">Hora de Creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let unidad of dataSource.data" class="hover:bg-gray-100 transition duration-300 ease-in-out">
+        <td class="py-2 px-4">
+          <button class="text-red-600 hover:text-red-700 font-bold" (click)="eliminar(unidad.id)">Eliminar</button>
+        </td>
+        <td class="py-2 px-4">
+          <button class="text-yellow-600 hover:text-yellow-700 font-bold" (click)="update(unidad.id)">Editar</button>
+        </td>
+        <td class="py-2 px-4">{{ unidad.nombre }}</td>
+        <td class="py-2 px-4">{{ unidad.cursos.nombre }}</td>
+        <td class="py-2 px-4">{{ unidad.usuario.nombres }} {{ unidad.usuario.apellidos }}</td>
+        <td class="py-2 px-4">{{ unidad.introduccion }}</td>
+        <td class="py-2 px-4">{{ unidad.fecha_creacion }}</td>
+        <td class="py-2 px-4">{{ unidad.hora_creacion }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

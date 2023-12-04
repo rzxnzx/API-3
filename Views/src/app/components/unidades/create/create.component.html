@@ -45,7 +45,7 @@
     <div>
         <mat-form-field>
             <mat-label>Curso</mat-label>
-            <mat-select formControlName="curso" required>
+            <mat-select formControlName="cursos_id" required>
                 <mat-option *ngFor="let curso of listaCursos" [value]="curso.id">
                     {{ curso.nombre }}
                 </mat-option>
@@ -56,7 +56,7 @@
     <div>
         <mat-form-field>
             <mat-label>Usuario</mat-label>
-            <mat-select formControlName="usuario" required>
+            <mat-select formControlName="usuario_id" required>
                 <mat-option *ngFor="let usuario of listaUsuarios" [value]="usuario.id">
                     {{ usuario.nombres }} {{ usuario.apellidos }}
                 </mat-option>

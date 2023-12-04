@@ -10,6 +10,6 @@ class UnidadesRules {
         'introduccion' => ['String', 'Required'],
         'fecha_creacion' => ['Date', 'Required'],
         'hora_creacion' => ['Hour', 'Required'],
-        'activa' => ['Boolean', 'Required'],
+        'activa' => ['Required'],
     ];
 }

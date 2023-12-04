@@ -15,8 +15,8 @@ import { DatePipe } from '@angular/common';
 })
 export class UnidadesCreateComponent implements OnInit {
   unidadForm!: FormGroup;
-  listaUsuarios: any[] = []; 
-  listaCursos: any[] = []; 
+  listaUsuarios: any[] = [];
+  listaCursos: any[] = [];
 
   constructor(
     private unidadesService: UnidadesService,
@@ -24,18 +24,19 @@ export class UnidadesCreateComponent implements OnInit {
     private messageService: MessageService,
     private formBuilder: FormBuilder,
     private usuariosService: UsuarioService,
-    private cursosService: CursosService
-  ) {}
+    private cursosService: CursosService,
+    private datePipie: DatePipe
+  ) { }
 
   ngOnInit(): void {
     this.unidadForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       introduccion: ['', Validators.required],
-      fecha_creacion: ['', [Validators.required, Validators.email]],
+      fecha_creacion: ['', Validators.required],
       hora_creacion: ['', Validators.required],
       activa: ['', Validators.required],
-      curso: ['', Validators.required],
-      usuario: ['', Validators.required],
+      cursos_id: ['', Validators.required],
+      usuario_id: ['', Validators.required],
     });
 
     this.usuariosService.getAll().subscribe(
@@ -65,6 +66,8 @@ export class UnidadesCreateComponent implements OnInit {
 
   public save() {
     if (this.unidadForm.valid) {
+      const fecha_creacionFormatted = this.datePipie.transform(this.unidadForm.value.fecha_creacion, 'yyyy-MM-dd')
+      this.unidadForm.patchValue({ fecha_creacion: fecha_creacionFormatted });
       this.unidadesService.create(this.unidadForm.value).subscribe(
         (response: Response) => {
           if (response.code === 200) {

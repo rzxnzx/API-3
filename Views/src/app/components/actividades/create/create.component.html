@@ -5,7 +5,7 @@
     <div>
         <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre" placeholder="Nombre" required>
+            <input matInput formControlName="titulo" placeholder="Nombre" required>
         </mat-form-field>
     </div>
 
@@ -27,7 +27,7 @@
     <div>
         <mat-form-field>
             <mat-label>Unidad</mat-label>
-            <mat-select formControlName="unidad" required>
+            <mat-select formControlName="unidad_id" required>
                 <mat-option *ngFor="let unidad of listaUnidades" [value]="unidad.id">
                     {{ unidad.nombre }}
                 </mat-option>

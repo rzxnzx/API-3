@@ -27,7 +27,7 @@ export class ActividadesCreateComponent {
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
       actividadescol: ['', Validators.required],
-      unidad: ['', Validators.required],
+      unidad_id: ['', Validators.required],
     });
 
     this.UnidadesService.getAll().subscribe(
